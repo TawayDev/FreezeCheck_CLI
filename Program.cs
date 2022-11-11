@@ -1,4 +1,5 @@
-﻿using static NTKZP_CLI.ToolwizCheck;
+﻿using NTKZP_CLI;
+using static NTKZP_CLI.ToolwizCheck;
 using static NTKZP_CLI.API;
 public class Program {
     public static int REQUIRED_PERCENT = 100;

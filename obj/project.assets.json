@@ -5,10 +5,14 @@
       "Flurl/3.0.6": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Flurl.dll": {}
+          "lib/netstandard2.0/Flurl.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/netstandard2.0/Flurl.dll": {}
+          "lib/netstandard2.0/Flurl.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Flurl.Http/4.0.0-pre2": {
@@ -17,28 +21,40 @@
           "Flurl": "3.0.6"
         },
         "compile": {
-          "lib/net6.0/Flurl.Http.dll": {}
+          "lib/net6.0/Flurl.Http.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net6.0/Flurl.Http.dll": {}
+          "lib/net6.0/Flurl.Http.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Newtonsoft.Json/13.0.2-beta2": {
         "type": "package",
         "compile": {
-          "lib/net6.0/Newtonsoft.Json.dll": {}
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net6.0/Newtonsoft.Json.dll": {}
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
         }
       },
       "RestSharp/108.0.3-alpha.0.11": {
         "type": "package",
         "compile": {
-          "lib/net6.0/RestSharp.dll": {}
+          "lib/net6.0/RestSharp.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net6.0/RestSharp.dll": {}
+          "lib/net6.0/RestSharp.dll": {
+            "related": ".xml"
+          }
         }
       }
     }
@@ -138,19 +154,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Myste\\.nuget\\packages\\": {}
+    "C:\\Users\\Taway\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Myste\\RiderProjects\\NTKZP_CLI\\NTKZP_CLI.csproj",
+      "projectUniqueName": "C:\\Users\\Taway\\RiderProjects\\FreezeCheck_CLI\\NTKZP_CLI.csproj",
       "projectName": "NTKZP_CLI",
-      "projectPath": "C:\\Users\\Myste\\RiderProjects\\NTKZP_CLI\\NTKZP_CLI.csproj",
-      "packagesPath": "C:\\Users\\Myste\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Myste\\RiderProjects\\NTKZP_CLI\\obj\\",
+      "projectPath": "C:\\Users\\Taway\\RiderProjects\\FreezeCheck_CLI\\NTKZP_CLI.csproj",
+      "packagesPath": "C:\\Users\\Taway\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Taway\\RiderProjects\\FreezeCheck_CLI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Myste\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Taway\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -197,8 +213,7 @@
           "net47",
           "net471",
           "net472",
-          "net48",
-          "net481"
+          "net48"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -207,7 +222,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }
