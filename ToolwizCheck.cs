@@ -10,6 +10,7 @@ public class ToolwizCheck {
     private static object? CURRENT_REGISTRY_PROTECT_MODE;
     private static object? CURRENT_REGISTRY_NEXT_BOOT_PROTECT;
 
+    private static int PREVIOUS_RESULT = -1;
     public static bool TTFCheck(){
         try {
             // Check if the process is running
@@ -48,17 +49,34 @@ public class ToolwizCheck {
             // Convert result to percent
             int percent = (int) Math.Round((double) result / 5 * 100);
             bool passed = percent >= Program.REQUIRED_PERCENT;
-            
+
             // CLI debug bullshit:
-            FancyPrint("+------------------------------------------+");
-            FancyPrint(" CURRENT_REGISTRY_PROTECT_MODE:      " + CURRENT_REGISTRY_PROTECT_MODE);
-            FancyPrint(" CURRENT_REGISTRY_NEXT_BOOT_PROTECT: " + CURRENT_REGISTRY_NEXT_BOOT_PROTECT);
-            FancyPrint(" REGISTRY_RUN_EXISTS:                " + REGISTRY_RUN_EXISTS);
-            FancyPrint(" REGISTRY_RUN_EXISTS_WITH_PATH:      " + REGISTRY_RUN_EXISTS_WITH_PATH);
-            FancyPrint(" isRunningProcess:                   " + isRunningProcess);
-            FancyPrint("+------------------------------------------+");
-            FancyPrint("RESULT: " + result + "/5 " + "(" + percent + "%)");
-            FancyPrint("PASSED: " + passed);
+            // Oh nyo~ this code does not follow the DRY principle. I'm so sorry. (I'm not sorry ... its fucking midnight. leave me alone)
+            if (PREVIOUS_RESULT != result && Program.PRINT_REG_ONLY_IF_CHANGED) {
+                FancyPrint("+------------------------------------------+");
+                FancyPrint(" CURRENT_REGISTRY_PROTECT_MODE:      " + CURRENT_REGISTRY_PROTECT_MODE);
+                FancyPrint(" CURRENT_REGISTRY_NEXT_BOOT_PROTECT: " + CURRENT_REGISTRY_NEXT_BOOT_PROTECT);
+                FancyPrint(" REGISTRY_RUN_EXISTS:                " + REGISTRY_RUN_EXISTS);
+                FancyPrint(" REGISTRY_RUN_EXISTS_WITH_PATH:      " + REGISTRY_RUN_EXISTS_WITH_PATH);
+                FancyPrint(" isRunningProcess:                   " + isRunningProcess);
+                FancyPrint("+------------------------------------------+");
+                FancyPrint("RESULT: " + result + "/5 " + "(" + percent + "%)");
+                FancyPrint("PASSED: " + passed);  
+            }
+
+            if (!Program.PRINT_REG_ONLY_IF_CHANGED) {
+                FancyPrint("+------------------------------------------+");
+                FancyPrint(" CURRENT_REGISTRY_PROTECT_MODE:      " + CURRENT_REGISTRY_PROTECT_MODE);
+                FancyPrint(" CURRENT_REGISTRY_NEXT_BOOT_PROTECT: " + CURRENT_REGISTRY_NEXT_BOOT_PROTECT);
+                FancyPrint(" REGISTRY_RUN_EXISTS:                " + REGISTRY_RUN_EXISTS);
+                FancyPrint(" REGISTRY_RUN_EXISTS_WITH_PATH:      " + REGISTRY_RUN_EXISTS_WITH_PATH);
+                FancyPrint(" isRunningProcess:                   " + isRunningProcess);
+                FancyPrint("+------------------------------------------+");
+                FancyPrint("RESULT: " + result + "/5 " + "(" + percent + "%)");
+                FancyPrint("PASSED: " + passed);  
+            }
+            
+            PREVIOUS_RESULT = result;
             return passed;
         } catch (Exception e) {
             FancyPrint(e.Message, LogLevel.ERROR);

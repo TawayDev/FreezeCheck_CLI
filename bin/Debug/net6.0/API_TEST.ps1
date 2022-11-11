@@ -1,3 +1,4 @@
+Write-Host "API Simulator running!" -b "Yellow" -f "Black"
 $run = $true
 $ip = "127.0.0.1"
 $port = "8080"
@@ -19,7 +20,7 @@ while ($run) {
         write-host "$($context.Request.UserHostAddress)  =>  $($context.Request.Url)" -f 'mag'
         Write-Host $FormContent -f 'Green'
     
-        [string]$html = "[API] POST SUCCESS" 
+        [string]$html = "POST SUCCESS" 
     
         $buffer = [System.Text.Encoding]::UTF8.GetBytes($html)
         $context.Response.ContentLength64 = $buffer.Length

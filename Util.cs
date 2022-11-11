@@ -1,6 +1,4 @@
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
 
 namespace NTKZP_CLI; 
 
@@ -13,7 +11,8 @@ public class Util {
         INFO,
         WARNING = ConsoleColor.Yellow,
         ERROR = ConsoleColor.Red,
-        SUCCESS = ConsoleColor.Green
+        SUCCESS = ConsoleColor.Green,
+        IMPORTANT = ConsoleColor.Magenta
     }
 
     public static void FancyPrint(string text, LogLevel level = LogLevel.INFO) {
@@ -23,25 +22,17 @@ public class Util {
             case LogLevel.INFO:
                 if (counter == 0) {
                     Console.ForegroundColor = defaultColor;
-                    Console.WriteLine(text);
+                    Console.WriteLine($"[INFO] {text}");
                     counter = 1;
                 } else {
                     Console.ForegroundColor = secondaryColor;
-                    Console.WriteLine(text);
+                    Console.WriteLine($"[INFO] {text}");
                     counter = 0;
                 }
                 break;
-            case LogLevel.WARNING:
+            default:
                 Console.ForegroundColor = (ConsoleColor)level;
-                Console.WriteLine(text);
-                break;
-            case LogLevel.ERROR:
-                Console.ForegroundColor = (ConsoleColor)level;
-                Console.WriteLine(text);
-                break;
-            case LogLevel.SUCCESS:
-                Console.ForegroundColor = (ConsoleColor)level;
-                Console.WriteLine(text);
+                Console.WriteLine($"[{level}] {text}");
                 break;
         }
 
@@ -60,7 +51,7 @@ public class Util {
             string fileName = "config.json";
             string jsonString = File.ReadAllText(fileName);
             ClassJSON classJson = JsonSerializer.Deserialize<ClassJSON>(jsonString)!;
-            FancyPrint($"Deserialized JSON: CLASS_NAME: {classJson.CLASS_NAME}, PC_ID: {classJson.PC_ID}", LogLevel.SUCCESS);
+            // FancyPrint($"Deserialized JSON: CLASS_NAME: {classJson.CLASS_NAME}, PC_ID: {classJson.PC_ID}", LogLevel.SUCCESS);
             
             return classJson;
         } catch (Exception e) {

@@ -11,20 +11,30 @@ public class API {
     private static readonly string ENDPOINT = "";
     private static string CLASS_NAME;
     private static int? PC_ID;
+    private static int TIMEOUT = 5000;
     public static bool InformAPI() {
+        // TODO: Post destination:
+        // TODO: Move caching to init when you move CLI to WS
+        // Cache data because some fucker might delete config and we might not send correct data to API
         try {
-            // TODO: Post destination:
-            // TODO: Move caching to init when you move CLI to WS
-            // Cache data because some fucker might delete config and we could not send correct data to API
             if (!CACHED) {
+                FancyPrint("Caching deserialized json data");
                 ClassJSON classJson = GetClassJSON();
                 CLASS_NAME = classJson.CLASS_NAME;
                 PC_ID = classJson.PC_ID;
                 CACHED = true;
             }
-            
+        }
+        catch (Exception e) {
+            FancyPrint($"Failed to cache data. Reason: {e.Message}", LogLevel.ERROR);
+            CACHED = false;
+        }
+        
+        try {
+            FancyPrint("Attempting POST request to API", LogLevel.WARNING);
             var client = new RestClient(API_URL);
             var request = new RestRequest();
+            request.Timeout = TIMEOUT;
 
             // Content type is not required when adding parameters this way
             // This will also automatically UrlEncode the values
@@ -34,10 +44,13 @@ public class API {
             request.AddParameter("TIME",$"M{DateTime.Now.Month}D{DateTime.Now.Day}H{DateTime.Now.Hour}M{DateTime.Now.Minute}S{DateTime.Now.Second}", ParameterType.GetOrPost);
 
             RestResponse response = client.Post(request);
-            FancyPrint(response.Content);
+            // Check if response timed out
+            if (response.StatusCode == HttpStatusCode.RequestTimeout) return false;
+            // This code will execute if the request was successful
+            FancyPrint($"[API - REPLY] {response.Content}", LogLevel.IMPORTANT);
             return true;
         } catch (Exception e) {
-            FancyPrint(e.Message, LogLevel.ERROR);
+            FancyPrint($"An error occured while attempting to contact API. Reason: {e.Message}", LogLevel.ERROR);
             return false;
         }
     }
