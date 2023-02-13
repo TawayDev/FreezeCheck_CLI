@@ -22,17 +22,17 @@ public class Util {
             case LogLevel.INFO:
                 if (counter == 0) {
                     Console.ForegroundColor = defaultColor;
-                    Console.WriteLine($"[INFO] {text}");
+                    Console.WriteLine($"[{DateTime.Now.ToString(@"hh\:mm\:ss")}] [INFO] {text}");
                     counter = 1;
                 } else {
                     Console.ForegroundColor = secondaryColor;
-                    Console.WriteLine($"[INFO] {text}");
+                    Console.WriteLine($"[{DateTime.Now.ToString(@"hh\:mm\:ss")}] [INFO] {text}");
                     counter = 0;
                 }
                 break;
             default:
                 Console.ForegroundColor = (ConsoleColor)level;
-                Console.WriteLine($"[{level}] {text}");
+                Console.WriteLine($"[{DateTime.Now.ToString(@"hh\:mm\:ss")}] [{level}] {text}");
                 break;
         }
 

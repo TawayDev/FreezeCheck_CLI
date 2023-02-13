@@ -154,19 +154,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Taway\\.nuget\\packages\\": {}
+    "C:\\Users\\student\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Taway\\RiderProjects\\FreezeCheck_CLI\\NTKZP_CLI.csproj",
+      "projectUniqueName": "C:\\Users\\student\\RiderProjects\\FreezeCheck_CLI\\NTKZP_CLI.csproj",
       "projectName": "NTKZP_CLI",
-      "projectPath": "C:\\Users\\Taway\\RiderProjects\\FreezeCheck_CLI\\NTKZP_CLI.csproj",
-      "packagesPath": "C:\\Users\\Taway\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Taway\\RiderProjects\\FreezeCheck_CLI\\obj\\",
+      "projectPath": "C:\\Users\\student\\RiderProjects\\FreezeCheck_CLI\\NTKZP_CLI.csproj",
+      "packagesPath": "C:\\Users\\student\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\student\\RiderProjects\\FreezeCheck_CLI\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Taway\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\student\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -213,7 +217,8 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -222,7 +227,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
